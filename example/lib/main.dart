@@ -13,13 +13,24 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
     initPlatformState();
+
+    WidgetsBinding.instance.addObserver(this);
+
+    FlutterNativeAppState.observeAppState.listen((event) {
+      print('iOS App State     : $event');
+      print('WidgetsBinding now: ${WidgetsBinding.instance.lifecycleState}');
+    });
+  }
+
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+      print('WidgetsBinding updated to: $state');
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
