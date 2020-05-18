@@ -26,11 +26,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     FlutterNativeAppState.observeAppState.listen((event) {
       print('iOS App State     : $event');
       print('WidgetsBinding now: ${WidgetsBinding.instance.lifecycleState}');
+      print('framesEnabled now : ${WidgetsBinding.instance.framesEnabled}');
     });
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
-      print('WidgetsBinding updated to: $state');
+    print('WidgetsBinding updated: $state');
+    print('framesEnabled after LF: ${WidgetsBinding.instance.framesEnabled}');
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
