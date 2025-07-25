@@ -4,7 +4,7 @@ import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
-import io.flutter.plugin.common.PluginRegistry.Registrar  // <-- Add this import
+import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterNativeAppStatePlugin */
 class FlutterNativeAppStatePlugin : FlutterPlugin {
@@ -18,14 +18,6 @@ class FlutterNativeAppStatePlugin : FlutterPlugin {
         channel.setStreamHandler(null)
     }
 
-    companion object {
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            val instance = FlutterNativeAppStatePlugin()
-            instance.startListening(registrar.messenger())
-        }
-    }
-
     private fun startListening(messenger: BinaryMessenger) {
         channel = EventChannel(messenger, "flutter_native_app_state/events")
         channel.setStreamHandler(object : EventChannel.StreamHandler {
@@ -33,9 +25,7 @@ class FlutterNativeAppStatePlugin : FlutterPlugin {
                 events?.success(0)
             }
 
-            override fun onCancel(arguments: Any?) {
-                
-            }
+            override fun onCancel(arguments: Any?) {}
         })
     }
 }
