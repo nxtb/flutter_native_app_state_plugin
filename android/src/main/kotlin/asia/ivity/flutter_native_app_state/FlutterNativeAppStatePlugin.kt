@@ -9,6 +9,14 @@ import io.flutter.plugin.common.EventChannel
 public class FlutterNativeAppStatePlugin : FlutterPlugin {
     private lateinit var channel: EventChannel
 
+        companion object {
+        @JvmStatic
+        fun registerWith(registrar: Registrar) {
+            val instance = FlutterNativeAppStatePlugin()
+            instance.startListening(registrar.messenger())
+        }
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         startListening(flutterPluginBinding.binaryMessenger)
     }
