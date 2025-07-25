@@ -4,19 +4,10 @@ import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterNativeAppStatePlugin */
 public class FlutterNativeAppStatePlugin : FlutterPlugin {
     private lateinit var channel: EventChannel
-
-    companion object {
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            val instance = FlutterNativeAppStatePlugin()
-            instance.startListening(registrar.messenger())
-        }
-    }
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         startListening(flutterPluginBinding.binaryMessenger)
@@ -38,3 +29,4 @@ public class FlutterNativeAppStatePlugin : FlutterPlugin {
         })
     }
 }
+ 
