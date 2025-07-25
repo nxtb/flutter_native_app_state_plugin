@@ -4,7 +4,6 @@ import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterNativeAppStatePlugin */
 class FlutterNativeAppStatePlugin : FlutterPlugin {
