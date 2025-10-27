@@ -27,6 +27,8 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 30
 
+    namespace "asia.ivity.flutter_native_app_state"
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
