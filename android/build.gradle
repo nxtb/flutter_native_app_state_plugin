@@ -27,6 +27,15 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 30
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
     namespace "asia.ivity.flutter_native_app_state"
 
     sourceSets {
